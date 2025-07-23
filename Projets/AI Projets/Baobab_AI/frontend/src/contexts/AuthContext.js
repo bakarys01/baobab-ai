@@ -93,9 +93,32 @@ export function AuthProvider({ children }) {
       });
       return response;
     } catch (error) {
+      let errorMessage = 'Login failed';
+      
+      if (error.response?.data) {
+        const errorData = error.response.data;
+        
+        // Handle validation errors (array of objects)
+        if (Array.isArray(errorData.detail)) {
+          errorMessage = errorData.detail.map(err => err.msg || err).join(', ');
+        }
+        // Handle string error message
+        else if (typeof errorData.detail === 'string') {
+          errorMessage = errorData.detail;
+        }
+        // Handle single validation error object
+        else if (errorData.detail && errorData.detail.msg) {
+          errorMessage = errorData.detail.msg;
+        }
+        // Handle direct error object
+        else if (errorData.msg) {
+          errorMessage = errorData.msg;
+        }
+      }
+      
       dispatch({
         type: 'LOGIN_ERROR',
-        payload: error.response?.data?.detail || 'Login failed'
+        payload: errorMessage
       });
       throw error;
     }
@@ -117,9 +140,32 @@ export function AuthProvider({ children }) {
       });
       return response;
     } catch (error) {
+      let errorMessage = 'Registration failed';
+      
+      if (error.response?.data) {
+        const errorData = error.response.data;
+        
+        // Handle validation errors (array of objects)
+        if (Array.isArray(errorData.detail)) {
+          errorMessage = errorData.detail.map(err => err.msg || err).join(', ');
+        }
+        // Handle string error message
+        else if (typeof errorData.detail === 'string') {
+          errorMessage = errorData.detail;
+        }
+        // Handle single validation error object
+        else if (errorData.detail && errorData.detail.msg) {
+          errorMessage = errorData.detail.msg;
+        }
+        // Handle direct error object
+        else if (errorData.msg) {
+          errorMessage = errorData.msg;
+        }
+      }
+      
       dispatch({
         type: 'LOGIN_ERROR',
-        payload: error.response?.data?.detail || 'Registration failed'
+        payload: errorMessage
       });
       throw error;
     }

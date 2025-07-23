@@ -292,7 +292,7 @@ export default function RegisterForm() {
             </div>
           </div>
 
-          {error && <div className="auth-error">{error}</div>}
+          {error && <div className="auth-error">{typeof error === 'string' ? error : 'Une erreur est survenue'}</div>}
 
           <button
             type="submit"

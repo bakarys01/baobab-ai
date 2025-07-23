@@ -97,7 +97,7 @@ export default function LoginForm() {
             {errors.password && <span className="error-text">{errors.password}</span>}
           </div>
 
-          {error && <div className="auth-error">{error}</div>}
+          {error && <div className="auth-error">{typeof error === 'string' ? error : 'Une erreur est survenue'}</div>}
 
           <button
             type="submit"

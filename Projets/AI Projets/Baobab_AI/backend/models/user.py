@@ -29,7 +29,7 @@ class UserProfile(BaseModel):
     email: EmailStr = Field(..., description="User email")
     full_name: str = Field(..., min_length=2, max_length=100, description="Full name")
     username: str = Field(..., min_length=3, max_length=30, description="Username")
-    country: AfricanCountry = Field(..., description="African country")
+    country: str = Field(..., description="African country")
     city: Optional[str] = Field(None, max_length=100, description="City")
     bio: Optional[str] = Field(None, max_length=500, description="User bio")
     role: UserRole = Field(UserRole.USER, description="User role")
@@ -59,7 +59,8 @@ class UserProfile(BaseModel):
     
     @validator('username')
     def validate_username(cls, v):
-        if not v.isalnum() and '_' not in v:
+        import re
+        if not re.match(r'^[a-zA-Z0-9_]+$', v):
             raise ValueError('Username can only contain letters, numbers, and underscores')
         return v.lower()
 
@@ -68,7 +69,7 @@ class UserRegistration(BaseModel):
     full_name: str = Field(..., min_length=2, max_length=100)
     username: str = Field(..., min_length=3, max_length=30)
     password: str = Field(..., min_length=8, description="Password")
-    country: AfricanCountry
+    country: str
     city: Optional[str] = None
     preferred_language: str = "en"
     company: Optional[str] = None
