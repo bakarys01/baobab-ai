@@ -1,0 +1,25 @@
+{
+  "id": "sample_post_2",
+  "title": "Success: Implemented WhatsApp bot for customer service",
+  "content": "Just wanted to share our success story. We implemented a WhatsApp chatbot for our logistics company in Kenya and saw 40% reduction in customer service costs!",
+  "post_type": "success_story",
+  "category": "success_stories",
+  "tags": [
+    "whatsapp",
+    "chatbot",
+    "kenya",
+    "logistics"
+  ],
+  "author_id": "sample_user_2",
+  "author_name": "James Kirimi",
+  "author_country": "kenya",
+  "status": "active",
+  "created_at": "2025-07-21T12:32:54.742476",
+  "view_count": 128,
+  "reply_count": 15,
+  "reactions": {
+    "celebrate": 25,
+    "like": 18,
+    "helpful": 12
+  }
+}

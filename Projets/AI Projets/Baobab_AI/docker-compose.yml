@@ -1,0 +1,115 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: baobab_postgres
+    environment:
+      POSTGRES_DB: baobab_ai
+      POSTGRES_USER: baobab_user
+      POSTGRES_PASSWORD: your_secure_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - baobab_network
+    restart: unless-stopped
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: baobab_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - baobab_network
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+  # Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: baobab_backend
+    environment:
+      - DATABASE_URL=postgresql://baobab_user:your_secure_password@postgres:5432/baobab_ai
+      - REDIS_URL=redis://redis:6379
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - SERPAPI_API_KEY=${SERPAPI_API_KEY}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY:-your-super-secret-jwt-key-change-in-production}
+      - ENVIRONMENT=production
+      - DEBUG=False
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - baobab_network
+    restart: unless-stopped
+    command: >
+      sh -c "
+        echo 'Waiting for PostgreSQL...' &&
+        sleep 10 &&
+        echo 'Running database migrations...' &&
+        alembic upgrade head &&
+        echo 'Starting FastAPI server...' &&
+        uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+      "
+
+  # Frontend React App
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: baobab_frontend
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+      - GENERATE_SOURCEMAP=false
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - baobab_network
+    restart: unless-stopped
+
+  # Nginx Reverse Proxy (Optional for production)
+  nginx:
+    image: nginx:alpine
+    container_name: baobab_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - baobab_network
+    restart: unless-stopped
+    profiles:
+      - production
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  baobab_network:
+    driver: bridge

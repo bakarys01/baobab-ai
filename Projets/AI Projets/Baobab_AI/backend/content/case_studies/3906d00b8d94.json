@@ -1,0 +1,29 @@
+{
+  "id": "3906d00b8d94",
+  "content_type": "case_study",
+  "created_at": "2025-07-23T12:32:54.731476",
+  "status": "draft",
+  "view_count": 0,
+  "like_count": 0,
+  "share_count": 0,
+  "title": "Flutterwave: AI-Powered Fraud Detection for African Payments",
+  "company_name": "Flutterwave",
+  "country": "nigeria",
+  "industry": "fintech",
+  "challenge": "High fraud rates in cross-border African payments were causing significant losses and reducing customer trust.",
+  "solution": "Implemented machine learning models to detect fraudulent transactions in real-time, considering African payment patterns and behaviors.",
+  "implementation": "Built ensemble models using XGBoost and neural networks, integrated with their payment infrastructure, trained on 2+ years of African transaction data.",
+  "results": "Reduced fraud by 85%, saved $50M+ annually, improved customer trust, enabled expansion to 15+ African countries.",
+  "author_id": "admin",
+  "technologies_used": [
+    "python",
+    "xgboost",
+    "tensorflow",
+    "kafka",
+    "redis"
+  ],
+  "roi_percentage": 300.0,
+  "time_saved": "Real-time fraud detection vs 24-48 hour manual review",
+  "team_size": 12,
+  "implementation_duration": "8 months"
+}

@@ -1,0 +1,36 @@
+{
+  "id": "10c9f8560ab9",
+  "slug": "machine-learning-pour-lagriculture-en-afrique-de-louest",
+  "content_type": "tutorial",
+  "created_at": "2025-07-23T12:32:54.730476",
+  "updated_at": "2025-07-23T12:32:54.730476",
+  "status": "draft",
+  "view_count": 0,
+  "like_count": 0,
+  "completion_rate": 0.0,
+  "title": "Machine Learning pour l'Agriculture en Afrique de l'Ouest",
+  "description": "Utilisez l'IA pour optimiser les rendements agricoles en tenant compte du climat africain",
+  "author_id": "admin",
+  "author_name": "Équipe Baobab AI",
+  "difficulty_level": "advanced",
+  "content_body": "# Machine Learning pour l'Agriculture en Afrique de l'Ouest\n\n## Introduction\nL'agriculture représente 60% de l'emploi en Afrique de l'Ouest. L'IA peut transformer ce secteur.\n\n## Objectifs d'Apprentissage\n- Analyser les données climatiques africaines\n- Prédire les rendements des cultures locales\n- Optimiser l'utilisation de l'eau\n- Détecter les maladies des cultures par vision artificielle\n\n## Données Spécifiques à l'Afrique\n- Patterns de précipitations irréguliers\n- Variabilité des sols\n- Cultures locales (mil, sorgho, igname)\n- Contraintes infrastructurelles\n\n## Code Exemple : Prédiction des Rendements\n```python\nimport pandas as pd\nfrom sklearn.ensemble import RandomForestRegressor\n\n# Données climatiques ouest-africaines\ndef prepare_west_africa_data():\n    # Température, précipitations, humidité du sol\n    # Données satellites disponibles via Google Earth Engine\n    pass\n\ndef predict_crop_yield(crop_type, location, season_data):\n    # Modèle spécialisé pour les conditions ouest-africaines\n    model = RandomForestRegressor(n_estimators=100)\n    # ... implementation\n    return predicted_yield\n```\n\n## Intégration Mobile\nDéveloppez des applications SMS/USSD pour les agriculteurs sans smartphones.\n\n## Impact Attendu\n- Augmentation des rendements de 15-25%\n- Réduction du gaspillage d'eau de 30%\n- Détection précoce des maladies\n",
+  "tags": [
+    "agriculture",
+    "machine-learning",
+    "climat"
+  ],
+  "categories": [
+    "agriculture-ai",
+    "data-science"
+  ],
+  "african_countries": [
+    "senegal",
+    "mali",
+    "burkina_faso",
+    "niger"
+  ],
+  "languages": [
+    "fr"
+  ],
+  "estimated_duration": 180
+}

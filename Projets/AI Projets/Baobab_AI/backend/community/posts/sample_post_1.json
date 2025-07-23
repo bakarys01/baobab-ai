@@ -1,0 +1,24 @@
+{
+  "id": "sample_post_1",
+  "title": "Best AI tools for small businesses in Nigeria",
+  "content": "What AI tools have worked well for your small business in Nigeria? Looking for practical solutions that don't break the bank.",
+  "post_type": "question",
+  "category": "tools_resources",
+  "tags": [
+    "sme",
+    "nigeria",
+    "tools",
+    "chatbot"
+  ],
+  "author_id": "sample_user",
+  "author_name": "Adaora Okafor",
+  "author_country": "nigeria",
+  "status": "active",
+  "created_at": "2025-07-23T12:32:54.742476",
+  "view_count": 45,
+  "reply_count": 8,
+  "reactions": {
+    "helpful": 12,
+    "like": 8
+  }
+}

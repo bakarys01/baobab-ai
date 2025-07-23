@@ -1,0 +1,275 @@
+/* Layout Styles */
+
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.sidebar {
+  width: 280px;
+  background: linear-gradient(180deg, #1e40af 0%, #1e3a8a 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.sidebar-header {
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0 0 20px 0;
+  text-align: center;
+  color: white;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.user-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.user-name {
+  font-weight: 600;
+  margin: 0;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-email {
+  font-size: 0.8rem;
+  margin: 2px 0 0 0;
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  margin: 0 8px;
+  border-radius: 8px;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transform: translateX(4px);
+}
+
+.nav-item.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-weight: 500;
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+  width: 24px;
+  text-align: center;
+}
+
+.nav-label {
+  flex: 1;
+}
+
+.sidebar-footer {
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logout-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.logout-button:hover {
+  background: rgba(239, 68, 68, 0.3);
+  color: #fecaca;
+  transform: translateY(-1px);
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 280px;
+  padding: 24px;
+  overflow-y: auto;
+  min-height: 100vh;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    position: fixed;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 16px;
+  }
+
+  .user-details {
+    display: none;
+  }
+
+  .nav-label {
+    display: none;
+  }
+
+  .sidebar {
+    width: 80px;
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 80px;
+  }
+
+  .sidebar-header {
+    padding: 16px 8px;
+    text-align: center;
+  }
+
+  .sidebar-title {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .user-info {
+    justify-content: center;
+  }
+
+  .nav-item {
+    justify-content: center;
+    padding: 12px 8px;
+    margin: 0 4px;
+  }
+
+  .logout-button {
+    justify-content: center;
+    padding: 12px 8px;
+  }
+}
+
+/* Content area styles */
+.page-header {
+  margin-bottom: 32px;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 8px 0;
+}
+
+.page-subtitle {
+  color: #6b7280;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.content-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+}
+
+.content-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+  color: white;
+  padding: 24px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+}
+
+.stat-label {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin: 0;
+}

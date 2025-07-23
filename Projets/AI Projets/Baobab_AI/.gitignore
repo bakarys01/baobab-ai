@@ -1,0 +1,24 @@
+# Global
+__pycache__/
+.env
+*.env
+*.pyc
+*.pyo
+*.pyd
+venv/
+.env.*
+node_modules/
+build/
+dist/
+.DS_Store
+*.log
+# VSCode
+.vscode/
+# React
+frontend/build/
+frontend/node_modules/
+# FastAPI
+backend/.env
+backend/venv/
+backend/__pycache__/
+backend/*.db
